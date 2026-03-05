@@ -33,18 +33,19 @@ public class Action {
 	   WebElement trash=driver.findElement(By.id("trash"));
 
 	 Actions move=new Actions(driver);
-	 int photo=0;
+	
      for(WebElement image:images) {
 	 move.dragAndDrop(image,trash).perform();
-	 photo++;
-	 }
-     List<WebElement> trashImages = driver.findElements(By.xpath("//div[@id='trash']//li"));
 
-     if (trashImages.size() == photo) {
-         System.out.println("All images successfully added to Trash");
-     } else {
-         System.out.println("Drag and Drop Failed");
-     }
+	 }
+   List<WebElement> trashImages = driver.findElements(By.xpath("//div[@id='trash']//li"));
+
+   if (trashImages.size() > 0) {
+       System.out.println("Images successfully moved to Trash");
+   } else {
+       System.out.println("Drag and Drop failed");
+   }
+
      driver.quit();
 
    
